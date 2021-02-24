@@ -1,0 +1,13 @@
+<h1>Hi, Welcome to my index page</h1>
+<p>Find me in app/views/demo/index.html.erb</p>
+
+
+<!--<%5+4%>     only calculates answer
+<%=5+4%>     calculates answer and displays it on browser
+-->
+
+ID = <%= @id %>
+<br/>Next ID = <%= params[:id].to_i + 1 %>
+
+<br />
+<%= link_to('All subjects', subjects_path) %>
