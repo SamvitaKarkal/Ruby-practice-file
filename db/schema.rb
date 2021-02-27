@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_02_09_175644) do
   enable_extension "plpgsql"
 
   create_table "pages", force: :cascade do |t|
+    t.bigint "subject_id"
     t.string "name"
     t.string "permalink"
     t.integer "position"
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_02_09_175644) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_id"], name: "index_pages_on_subject_id"
   end
 
   create_table "subjects", force: :cascade do |t|
