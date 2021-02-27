@@ -1,7 +1,7 @@
 class CreatePages < ActiveRecord::Migration[6.1]
   def change
     create_table :pages do |t|
-      t.belong_to :subject
+      t.belongs_to :subject
       t.string :name
       t.string :permalink
       t.integer :position
