@@ -2,10 +2,12 @@
 <p><%= link_to('Show subject', subject_path(1)) %></p>
 -->
 
+
+
 <div class="subjects index">
   <h2>Subjects</h2>
 
-  <%= link_to("Add New Subject", '#', :class => 'action new') %>
+  <%= link_to("Add New Subject", new_subject_path, :class => 'action new') %>
 
   <table class="listing" summary="Subject list">
     <tr class="header">
@@ -24,8 +26,8 @@
       <td class="actions">
         
         <%= link_to("Show", subject_path(subject), :class=>'action show') %>    <!-- using resourceful routes -->
-        <%= link_to("Edit", '#', :class => 'action edit') %>
-        <%= link_to("Delete", '#', :class => 'action delete') %>
+        <%= link_to("Edit", edit_subject_path(subject), :class => 'action edit') %>
+        <%= link_to("Delete", delete_subject_path(subject), :class => 'action delete') %>
       </td>
     </tr>
     <% end %>

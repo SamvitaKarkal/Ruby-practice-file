@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'sections/index'
   root "demo#hello"
 # root "demo#index"
   get 'demo/index'        #simple route
