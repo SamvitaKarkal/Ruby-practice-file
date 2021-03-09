@@ -1,41 +1,52 @@
 class PagesController < ApplicationController
+
   def index
-    @pages= Page.order(' position ASC')
+    @pages= Page.sorted
   end
 
   def show
-    @pages= Page.find(params[:id])
+    @page= Page.find(params[:id])
   end
 
   def new
-    @pages= Page.new
+    @page= Page.new
   end
 
   def create 
-    @pages= Page.new(pages.params)
-    if pages.save
-      redirect_to(page_path)
+    @page= Page.new(page_params)
+    if @page.save
+      redirect_to(pages_path)
     else 
-      redirect_to('new')
+      render('new')
+    end
   end
 
   def edit
-    @pages= Page.find(params[:id])
+    @page= Page.find(params[:id])
   end
 
   def update
-    @pages= Page.find(params[:id])
-    
+    @page= Page.find(params[:id])
+    if @page.update_attributes(page_params)
+      redirect_to(page_path(@page))
+   else 
+      redirect_to('edit')
+   end
   end
 
   def delete
-    @pages =Page.find(params[:id])
+    @page =Page.find(params[:id])
   end
 
   def destroy
-    @pages =Page.find(params[:id])
-    Page.destroy
-    redirect_to('index')
+    @page = Page.find(params[:id])
+    @page.destroy
+    redirect_to(pages_path)
   end
-  
+
+  private
+  def page_params
+    params.require(:page).permit(:name, :subject_id, :position, :visible, :permalink)
+  end
+
 end

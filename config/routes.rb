@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'sections/index'
-  root "demo#hello"
-# root "demo#index"
-  get 'demo/index'        #simple route
-  get 'demo/hello'  # get ':controller(/:action(/:id))'  #default route
-  get 'demo/about'
-  get 'demo/contact'
+  root 'demo#index'
 
   resources :subjects do
     member do
@@ -19,7 +13,6 @@ Rails.application.routes.draw do
       get :delete
     end
   end
-
 
   # get 'pages/index'
   # get 'pages/show'
@@ -34,4 +27,9 @@ Rails.application.routes.draw do
   # get 'subjects/delete'
   # get 'self_contr/home'
 
+  #root "demo#index"
+  get 'demo/index'        #simple route
+  #get 'demo/hello'  # get ':controller(/:action(/:id))'  #default route
+  #get 'demo/about'
+  #get 'demo/contact'
 end
