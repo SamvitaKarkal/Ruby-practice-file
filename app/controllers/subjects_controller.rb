@@ -18,7 +18,7 @@ class SubjectsController < ApplicationController
     #Save the object
     if @subject.save
     #If save successful, redirect to the index action
-      flash[:notice]="Subject created successfully"
+      flash[:notice]= "Subject created successfully"
     redirect_to(subjects_path)
 
     #redirecting it to the index page
@@ -36,9 +36,9 @@ class SubjectsController < ApplicationController
 
   def update
     @subject=Subject.find(params[:id]) 
-  
-    if @subject.update_attributes(subject_params)
-      flash[:notice]="Subject updated successfully"
+
+    if @subject.update(subject_params)
+      flash[:notice]= "Subject updated successfully"
       redirect_to(subject_path(@subject))
     else
       render('edit')
@@ -52,7 +52,7 @@ class SubjectsController < ApplicationController
   def destroy
     @subject = Subject.find(params[:id])
     @subject.destroy
-    flash[:notice]="Subject '#{@subject.name}' destroyed successfully"
+    flash[:notice]= "Subject '#{@subject.name}' destroyed successfully"
     redirect_to(subjects_path)
   end
 
