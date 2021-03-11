@@ -9,10 +9,12 @@ class SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find(params[:id])
+   
   end
 
   def new
-    @subject= Subject.new
+    @subject= Subject.new({:name=>'Default'})
+    @subject_count = Subject.count + 1
   end
 
   def create 
@@ -28,6 +30,8 @@ class SubjectsController < ApplicationController
     #redirecting it to the index page
     else
     #If save fails, redisplay the form so user can fix problems
+    @subject_count = Subject.count + 1
+    #added because subject_count not initially passed.
     render('new') 
     #redirect it to the form
     #to data is saved in @subject is used to prepopulate the form
@@ -36,6 +40,7 @@ class SubjectsController < ApplicationController
 
   def edit
     @subject=Subject.find(params[:id])
+    @subject_count = Subject.count
   end
 
   def update
@@ -45,6 +50,7 @@ class SubjectsController < ApplicationController
       flash[:notice]= "Subject updated successfully"
       redirect_to(subject_path(@subject))
     else
+      @subject_count = Subject.count
       render('edit')
     end
   end
@@ -62,7 +68,7 @@ class SubjectsController < ApplicationController
 
   private
   def subject_params
-    params.require(:subject).permit(:name, :position, :visible)
+    params.require(:subject).permit(:name, :position, :visible, :created_at)
   end
 
   #these are declared here seperately as we wouldn't have to redeclare the when needed again
