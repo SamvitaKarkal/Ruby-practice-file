@@ -1,6 +1,10 @@
 class SubjectsController < ApplicationController
+ 
+ layout 'admin'
+
   def index
     @subjects =Subject.order("position ASC")
+    @page_title="All Subjects"
   end
 
   def show

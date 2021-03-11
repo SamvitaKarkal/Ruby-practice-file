@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+  layout 'admin'
+
   def index
     @pages= Page.sorted
   end
@@ -27,7 +29,7 @@ class PagesController < ApplicationController
 
   def update
     @page= Page.find(params[:id])
-    if @page.update_attributes(page_params)
+    if @page.update(page_params)
       redirect_to(page_path(@page))
    else 
       redirect_to('edit')

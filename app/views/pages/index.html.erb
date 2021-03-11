@@ -21,6 +21,7 @@
       <td class="center"><%= page.name%></td>
       <td><%page.permalink%>
       <td class="center"><%= page.visible ? 'Yes' : 'No' %></td>
+            
       <td class="actions">
         <%= link_to("Show", page_path(page), :class=>'action show') %>    <!-- using resourceful routes -->
         <%= link_to("Edit", edit_page_path(page), :class => 'action edit') %>

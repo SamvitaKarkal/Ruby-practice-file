@@ -3,7 +3,7 @@
 <div class="Edit pages">
   <h2>Edit Pages</h2>
 
-  <%= form_for(@page, :url => pages_path, :method => 'post') do |f| %>
+  <%= form_for(@page, :url =>page_path(@page), :method => 'patch') do |f| %>
 
     <table summary="Pages form fields">
       <tr>
