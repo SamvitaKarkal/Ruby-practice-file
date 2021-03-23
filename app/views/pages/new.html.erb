@@ -3,7 +3,7 @@
 <div class="pages new">
   <h2>Create Pages</h2>
 
-  <%= form_for(@page, :url => pages_path, :method => 'post') do |f| %>
+  <%= form_for(@page, :url =>page_path(@page), :method => 'post') do |f| %>
 
     <table summary="Pages form fields">
       <tr>

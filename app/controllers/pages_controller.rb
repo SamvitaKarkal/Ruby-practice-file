@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+  layout 'admin'
+
   def index
     @pages= Page.sorted
   end
@@ -10,6 +12,8 @@ class PagesController < ApplicationController
 
   def new
     @page= Page.new
+    @page_count = Page.count + 1
+    @subjects = Subject.sorted
   end
 
   def create 
@@ -17,19 +21,25 @@ class PagesController < ApplicationController
     if @page.save
       redirect_to(pages_path)
     else 
+      @page_count = Page.count + 1
+      @subjects = Subject.sorted
       render('new')
     end
   end
 
   def edit
     @page= Page.find(params[:id])
+    @page_count = Page.count
+    @subjects = Subject.sorted
   end
 
   def update
     @page= Page.find(params[:id])
-    if @page.update_attributes(page_params)
+    if @page.update(page_params)
       redirect_to(page_path(@page))
    else 
+    @page_count = Page.count + 1
+    @subjects = Subject.sorted
       redirect_to('edit')
    end
   end

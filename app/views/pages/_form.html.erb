@@ -1,9 +1,3 @@
-<%= link_to("<< Back to List", pages_path, :class => 'back-link-page') %>
-
-<div class="Edit pages">
-  <h2>Edit Pages</h2>
-
-  <%= form_for(@page, :url =>page_path(@page), :method => 'patch') do |f| %>
 
     <table summary="Pages form fields">
       <tr>
@@ -12,7 +6,7 @@
       </tr>
       <tr>
         <th>Subject ID</th>
-        <td><%= f.text_field(:subject_id) %></td>
+        <td><%= f.select(:subject_id, @subjects.map {|s| [s.name, s.id]}) %></td>
       </tr>
       <tr>
         <th>Permalink</th>
@@ -20,7 +14,7 @@
       </tr>
       <tr>
         <th>Position</th>
-        <td><%= f.text_field(:position) %></td>
+        <td><%= f.select(:position, 1..@page_count) %></td>
       </tr>
         <tr>
         <th>Visible</th>
@@ -28,11 +22,3 @@
       </tr>
 
     </table>
-
-    <div class="form-buttons">
-      <%= f.submit("Edit Page") %>
-    </div>
-
-
-  <% end %>
-</div>
